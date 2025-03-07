@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:plant/model/plant_recognition_response.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class PlantRecognitionService {
   final Dio _dio = Dio();
-  final String apiKey = 'T6T213wIqgb9WPM47vqpEENQrcmIJFDFmhrxws2J7lh9GbXS91';
+  final String apiKey = dotenv.env['API_KEY'] ?? '';
   final String apiUrl = 'https://plant.id/api/v3/identification';
 
   Future<PlantRecognitionResponse?> recognizePlant(File imageFile) async {
